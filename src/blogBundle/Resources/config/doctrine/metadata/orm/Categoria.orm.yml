@@ -1,0 +1,24 @@
+Categoria:
+    type: entity
+    table: categoria
+    uniqueConstraints:
+        UNIQ_4E10122D3A909126:
+            columns:
+                - NOMBRE
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            column: NOMBRE
+    lifecycleCallbacks: {  }

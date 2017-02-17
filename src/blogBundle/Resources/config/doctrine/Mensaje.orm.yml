@@ -1,0 +1,23 @@
+blogBundle\Entity\Mensaje:
+    type: entity
+    table: null
+    repositoryClass: blogBundle\Repository\MensajeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: '50'
+        contenido:
+            type: text
+        usuarioId:
+            type: integer
+            column: usuario_id
+        categoriaId:
+            type: integer
+            column: categoria_id
+    lifecycleCallbacks: {  }

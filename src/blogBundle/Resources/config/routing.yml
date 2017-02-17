@@ -1,0 +1,7 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: blogBundle:Default:index }
+
+blog_entrada:
+    path:     /entrada/{id}
+    defaults: { _controller: blogBundle:Default:entrada }

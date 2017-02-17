@@ -1,0 +1,59 @@
+Usuario:
+    type: entity
+    table: usuario
+    uniqueConstraints:
+        UNIQ_2265B05DD67CF11D:
+            columns:
+                - NOMBRE_USUARIO
+        UNIQ_2265B05D77040BC9:
+            columns:
+                - CORREO
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            column: NOMBRE
+        apellidos:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            column: APELLIDOS
+        fechaNacimiento:
+            type: date
+            nullable: false
+            column: FECHA_NACIMIENTO
+        fechaRegistro:
+            type: date
+            nullable: false
+            column: FECHA_REGISTRO
+        nombreUsuario:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            column: NOMBRE_USUARIO
+        contrasena:
+            type: string
+            nullable: false
+            length: 9
+            fixed: false
+            column: CONTRASENA
+        correo:
+            type: string
+            nullable: false
+            length: 40
+            fixed: false
+            column: CORREO
+    lifecycleCallbacks: {  }

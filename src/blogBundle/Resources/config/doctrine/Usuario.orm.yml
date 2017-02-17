@@ -1,0 +1,36 @@
+blogBundle\Entity\Usuario:
+    type: entity
+    table: null
+    repositoryClass: blogBundle\Repository\UsuarioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '30'
+        apellidos:
+            type: string
+            length: '100'
+        fechaNacimiento:
+            type: date
+            column: fecha_nacimiento
+        fechaRegistro:
+            type: date
+            column: fecha_registro
+        nombreUsuario:
+            type: string
+            length: '30'
+            unique: true
+            column: nombre_usuario
+        contrasena:
+            type: string
+            length: '9'
+        correo:
+            type: string
+            length: '40'
+            unique: true
+    lifecycleCallbacks: {  }

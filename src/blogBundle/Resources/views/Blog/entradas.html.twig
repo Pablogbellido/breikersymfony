@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+		{% for usuario in datos %}
+		<h1>{{ usuario.titulo }}</h1>
+		<p>{{ usuario.contenido }}</p>
+		<p>{{ usuario.nombre }}</p> 
+		{%endfor%}
+	
+	
+	
+{% endblock %}

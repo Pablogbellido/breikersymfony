@@ -1,0 +1,21 @@
+blogBundle\Entity\Comentario:
+    type: entity
+    table: null
+    repositoryClass: blogBundle\Repository\ComentarioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        contenido:
+            type: string
+            length: '250'
+        usuarioId:
+            type: integer
+            column: usuario_id
+        mensajeId:
+            type: integer
+            column: mensaje_id
+    lifecycleCallbacks: {  }

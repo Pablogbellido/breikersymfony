@@ -1,0 +1,29 @@
+Comentario:
+    type: entity
+    table: comentario
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        contenido:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+        usuarioId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usuario_id
+        mensajeId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: mensaje_id
+    lifecycleCallbacks: {  }

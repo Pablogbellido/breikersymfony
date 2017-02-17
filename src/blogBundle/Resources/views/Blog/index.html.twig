@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<h1>Mini Blog de Pruebas</h1>
+	<ol>
+		{% for mensaje in mensajes %}
+			<li><a href="{{ asset('entrada/')}}{{mensaje.id}}">{{mensaje.titulo}}</a></li>
+		{% endfor%}
+	</ol>
+{% endblock %}

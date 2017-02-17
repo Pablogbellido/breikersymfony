@@ -1,0 +1,36 @@
+Mensaje:
+    type: entity
+    table: mensaje
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        titulo:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            column: TITULO
+        contenido:
+            type: text
+            nullable: false
+            length: 16777215
+            fixed: false
+            column: CONTENIDO
+        usuarioId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: usuario_id
+        categoriaId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: categoria_id
+    lifecycleCallbacks: {  }
