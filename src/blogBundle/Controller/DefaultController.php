@@ -52,4 +52,7 @@ class DefaultController extends Controller
 
         return $this->render('blogBundle:Blog:entradas.html.twig', array('datos'=>$resultado));
     }
+	
+	// public function mensajesCategoriaAction
+	
 }
