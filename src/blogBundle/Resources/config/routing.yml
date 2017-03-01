@@ -5,3 +5,11 @@ blog_homepage:
 blog_entrada:
     path:     /entrada/{id}
     defaults: { _controller: blogBundle:Default:entrada }
+    
+blog_login:
+    path:     /login
+    defaults: { _controller: blogBundle:Login:index }
+    
+blog_logout:
+    path:     /logout
+    defaults: { _controller: blogBundle:Login:logout }

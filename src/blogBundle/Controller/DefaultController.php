@@ -7,16 +7,30 @@ use blogBundle\Entity\Usuario;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-		$em = $this->getDoctrine()
+		$session = $request->getSession();
+		
+		if($session->has("id")){
+			$em = $this->getDoctrine()
 					->getManager();
 		
 		$mensaje = $em->getRepository('blogBundle:Mensaje')
 						->findAll();
         return $this->render('blogBundle:Blog:index.html.twig', array('mensajes'=> $mensaje));
+		}
+		else{
+			$this->get('session')->getFlashbag()->add(
+				'mensaje',
+				'Debe iniciar sesion para ver el contenido de esta pagina');
+				return $this->redirect($this->generateUrl('blog_login'));
+		}
+		
 		
 						 
     }
