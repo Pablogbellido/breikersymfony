@@ -2,9 +2,13 @@ blog_homepage:
     path:     /
     defaults: { _controller: blogBundle:Default:index }
 
+blog_listent:
+    path:     /tutoriales
+    defaults: { _controller: blogBundle:Blog:index }
+
 blog_entrada:
     path:     /entrada/{id}
-    defaults: { _controller: blogBundle:Default:entrada }
+    defaults: { _controller: blogBundle:Blog:entrada }
     
 blog_login:
     path:     /login
@@ -13,3 +17,8 @@ blog_login:
 blog_logout:
     path:     /logout
     defaults: { _controller: blogBundle:Login:logout }
+
+blog_categorias:
+    path:     /tutoriales/{id}
+    defaults: { _controller: blogBundle:Blog:categoria }
+

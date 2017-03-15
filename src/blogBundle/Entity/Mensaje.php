@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Mensaje
+ * @ORM\Entity(repositoryClass="blogBundle\Entity\Mensaje")
  */
 class Mensaje
 {

@@ -1,12 +1,84 @@
 {% extends '::base.html.twig' %}
 
-{% block body %}
+	{% block body %}
 		{% for usuario in datos %}
-		<h1>{{ usuario.titulo }}</h1>
-		<p>{{ usuario.contenido }}</p>
-		<p>{{ usuario.nombre }}</p> 
-		{%endfor%}
-	
-	
-	
+		<div class="row">
+			<div class="col-md-12">
+					<ul class="breadcrumb">
+						<li><a href="{{ path('blog_homepage') }}">Inicio</a></li>
+						<li><a href="{{ path('blog_listent') }}">Tutoriales</a></li>
+						<li  class="active">{{ usuario.nombre }}</li>
+					</ul>
+
+				<h2>Tutoriales</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="center-block">
+						<ul class="list-inline">
+
+							{% for cat in categoria %}
+								<li><a class="btn btn-primary btn-xs" href="{{ asset('tutoriales/') }}{{ cat.id }}"  >{{ cat.nombre }}</a></li>
+							{% endfor%}
+
+							<li><a href="{{ path('blog_listent') }}" class="btn btn-primary btn-xs">Todas</a></li>
+						</ul>
+					</div>
+					<hr>
+				</div>
+
+
+			</div>
+		</div>
+
+			<div class="row">
+				<div class="col-md-8">
+					<h3>{{ usuario.titulo }}</h3>
+					<p>{{ usuario.contenido | raw}}</p>
+					<p>{{ usuario.nombreUsuario }}</p>
+				</div>
+				<div class="col-md-4">
+						<h4>Comentarios:</h4>
+
+
+					{% for comentario in comentarios %}
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h5 class="panel-title">{{ comentario.nombreUsuario}}</h5>
+							</div>
+							<div class="panel-body">
+
+								<p>{{ comentario.contenido }}</p>
+							</div>
+
+						</div>
+					{% endfor %}
+					<div class="panel panel-primary comments">
+						<div class="panel-heading">
+							<h5 class="panel-title">Deja un comentario:</h5>
+						</div>
+						<div class="panel-body">
+							<div class="form-group">
+
+								{{ form_start(formCom, {'action': "#", 'method': 'GET'}) }}
+								{{ form_errors(formCom) }}
+
+								{{ form_label(formCom.contenido, "Mensaje:") }}
+								{{ form_widget(formCom.contenido, {"attr" : {"class": "form-control"}}) }}
+							</div>
+							<div class="form-group">
+								{{ form_widget(formCom.enviar, {"attr": {"class": "form-control"}}) }}
+								{{ form_end(formCom) }}
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+	{%endfor%}
 {% endblock %}
+
+
+

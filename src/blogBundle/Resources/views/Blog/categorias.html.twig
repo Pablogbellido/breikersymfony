@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('blog_homepage') }}">Inicio</a></li>
+                <li><a href="{{ path('blog_listent') }}">Tutoriales</a></li>
+                <li class="active">{{ selCat.nombre }}</li>
+            </ul>
+            <h2>Tutoriales <small>- {{ selCat.nombre }}</small></h2>
+        </div>
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="center-block">
+                     <ul class="list-inline">
+
+                         {% for cat in categoria %}
+                             <li><a class="btn btn-primary btn-xs" href="{{ asset('tutoriales/') }}{{ cat.id }}"  >{{ cat.nombre }}</a></li>
+                         {% endfor%}
+
+                         <li><a href="{{ path('blog_listent') }}" class="btn btn-primary btn-xs">Todas</a></li>
+                     </ul>
+                 </div>
+                 <hr>
+             </div>
+
+
+        </div>
+    </div>
+
+    <ol>
+       {% for cat in smsCat %}
+           <li><a href="{{ asset('entrada/') }}{{ cat.id }}"  >{{ cat.titulo }}</a></li>
+       {% endfor%}
+    </ol>
+
+
+{% endblock %}

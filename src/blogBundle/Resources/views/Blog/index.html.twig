@@ -2,16 +2,31 @@
 
 {% block body %}
 	<div class="row">
-		<div class="col-md-6">
-			<h1>{{ app.session.get('nombre') }}, Bienvenido al Blog de pruebas</h1>
+
+		<div class="col-md-12">
+
+			<ul class="breadcrumb">
+				<li><a href="">Inicio</a></li>
+				<li class="active">Tutoriales</li>
+			</ul>
+			<h2>Tutoriales</h2>
+
+			<div class="center-block">
+
+				<ul class="list-inline">
+					{% for cat in categoria %}
+							<li><a class="btn btn-primary btn-xs" href="{{ asset('tutoriales/') }}{{ cat.id }}"  >{{ cat.nombre }}</a></li>
+
+					{% endfor%}
+				</ul>
+			</div>
+			<hr>
 		</div>
-		<div class="col-md-6">
-			<a href="{{ path('blog_logout')}}">Salir</a>
 	</div>
-	<hr>
 	<ol>
 		{% for mensaje in mensajes %}
 			<li><a href="{{ asset('entrada/')}}{{mensaje.id}}">{{mensaje.titulo}}</a></li>
 		{% endfor%}
 	</ol>
 {% endblock %}
+

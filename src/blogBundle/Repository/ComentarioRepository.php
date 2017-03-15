@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ComentarioRepository extends EntityRepository
 {
+    public function buscaComentarios($id){
+
+        return $this->getEntityManager()
+            ->createQuery("
+                    SELECT c.id, c.contenido, c.usuarioId, c.mensajeId, m.id, u.id, u.nombreUsuario
+                    FROM blogBundle:Comentario c, blogBundle:Mensaje m, blogBundle:Usuario u
+                    WHERE c.mensajeId = '$id' and m.id = c.mensajeId and c.usuarioId = u.id
+                    ORDER by c.id DESC 
+                ")
+            ->getResult();
+    }
 }

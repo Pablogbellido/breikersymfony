@@ -12,4 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoriaRepository extends EntityRepository
 {
+    public function findAllOrderedByName()
+    {
+        return $this->getEntityManager()
+            ->createQuery('
+                    SELECT n FROM blogBundle:Catecoria n ORDER BY n.id DESC 
+                ')
+            ->getResult();
+    }
+
+    public function busquedaPorCategoria($id)
+    {
+
+        return $this->getEntityManager()
+            ->createQuery("
+                    SELECT m.id, m.titulo, m.categoriaId
+                    FROM blogBundle:Mensaje m
+                    
+                    WHERE m.categoriaId = '$id' ORDER BY m.id DESC
+                ")
+            ->getResult();
+    }
 }

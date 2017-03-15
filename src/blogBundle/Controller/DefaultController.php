@@ -12,27 +12,10 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-		$session = $request->getSession();
-		
-		if($session->has("id")){
-			$em = $this->getDoctrine()
-					->getManager();
-		
-		$mensaje = $em->getRepository('blogBundle:Mensaje')
-						->findAll();
-        return $this->render('blogBundle:Blog:index.html.twig', array('mensajes'=> $mensaje));
-		}
-		else{
-			$this->get('session')->getFlashbag()->add(
-				'mensaje',
-				'Debe iniciar sesion para ver el contenido de esta pagina');
-				return $this->redirect($this->generateUrl('blog_login'));
-		}
-		
-		
-						 
+
+        return $this->render('blogBundle:Home:index.html.twig');
     }
 	
 	public function entradasAction($id)
@@ -52,20 +35,35 @@ class DefaultController extends Controller
         return $this->render('blogBundle:Blog:entradas.html.twig', array('usuario'=> $resultado));
     }
 	
-	public function entradaAction($id)
-    {
-		$em = $this->getDoctrine()->getManager();
 
-		$query = $em->createQuery(
-            'SELECT  m.titulo, m.contenido, u.nombre 
+
+    /*
+    public function entradaAction(Request $request, $id)
+    {
+        $session = $request->getSession();
+
+        if($session->has("id")){
+            $em = $this->getDoctrine()->getManager();
+
+            $query = $em->createQuery(
+                'SELECT  m.titulo, m.contenido, u.nombre
 			 FROM blogBundle:Mensaje m, blogBundle:Usuario u
 			 	WHERE u.id = m.usuarioId and m.id= :id
-        ')->setParameter('id', $id);		
+        ')->setParameter('id', $id);
 
-		$resultado=$query->getResult();
+            $resultado=$query->getResult();
 
-        return $this->render('blogBundle:Blog:entradas.html.twig', array('datos'=>$resultado));
+            return $this->render('blogBundle:Blog:entradas.html.twig', array('datos'=>$resultado));
+        }
+        else{
+            $this->get('session')->getFlashbag()->add(
+                'mensaje',
+                'Debe iniciar sesion para ver el contenido de esta pagina');
+            return $this->redirect($this->generateUrl('blog_login'));
+        }
+
     }
+    */
 	
 	// public function mensajesCategoriaAction
 	

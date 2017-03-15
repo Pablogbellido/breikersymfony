@@ -21,7 +21,7 @@ class LoginController extends Controller
 			if($user){
 				$session = $request->getSession();
 				$session->set("id", $user->getID());
-				$session->set("nombre", $user->getNombre());
+				$session->set("nombreUsuario", $user->getNombreUsuario());
 				
 				$em = $this->getDoctrine()
 					->getManager();

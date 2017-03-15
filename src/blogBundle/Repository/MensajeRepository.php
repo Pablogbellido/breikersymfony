@@ -12,4 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class MensajeRepository extends EntityRepository
 {
+    public function findAllOrderedByName()
+    {
+        return $this->getEntityManager()
+                ->createQuery('
+                    SELECT m FROM blogBundle:Mensaje m ORDER BY m.id DESC 
+                ')
+                ->getResult();
+    }
+
+    public function entrada($id)
+    {
+
+       return $this->getEntityManager()
+           ->createQuery(
+            'SELECT  m.titulo, m.contenido, u.nombreUsuario, c.nombre 
+			 FROM blogBundle:Mensaje m, blogBundle:Usuario u, blogBundle:Categoria c
+			 	WHERE u.id = m.usuarioId and m.id= :id and m.categoriaId = c.id
+        ')->setParameter('id', $id)
+            ->getResult();
+
+    }
 }
