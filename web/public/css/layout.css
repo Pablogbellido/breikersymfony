@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 header, nav{
     text-align: center;
 }
@@ -42,3 +43,8 @@ nav a:hover{
 nav ul {
     line-height: 2em;
 }
+=======
+body {
+    padding-bottom: 200px !important;
+}
+>>>>>>> Stashed changes

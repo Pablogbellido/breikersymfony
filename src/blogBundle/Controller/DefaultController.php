@@ -29,7 +29,7 @@ class DefaultController extends Controller
 		$query = $em->createQuery(
             'SELECT u FROM blogBundle:Mensaje m, blogBundle:Usuario u
 			 	WHERE u.id = m.usuarioId and m.id= :id
-        ')->setParameter('id', $id);		
+        ')->setParameter('id', $id);
 		$resultado=$query->getResult();
 		
         return $this->render('blogBundle:Blog:entradas.html.twig', array('usuario'=> $resultado));
